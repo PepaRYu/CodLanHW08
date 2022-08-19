@@ -4,10 +4,6 @@ int rows = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите количество столбцов");
 int columns = Convert.ToInt32(Console.ReadLine());
 
-if (rows != columns){
-    Console.WriteLine("количество строк не равно количетству столбцов");
-    return;
-}
 
 int [,] GetArray (int m, int n , int minRandom, int maxRandom ){
     int [,] result = new int[m, n];
@@ -33,29 +29,7 @@ void PrintArray(int [,] matrix){
     }
 }
 
-void ChangeRows(int [,]inputMatrix){
-    int indexLastRow = inputMatrix.GetLength(0) - 1;
-    for (int i = 0; i < inputMatrix.GetLength(1); i++)
-    {
-        int temp = inputMatrix[0, i];
-        inputMatrix[0, i] = inputMatrix[indexLastRow, i];
-        inputMatrix[indexLastRow, i] = temp;
-
-    }
-}
-
-int [,] ChangeArray(int [, ]array ){
-    int [,] result = new int[array.GetLength(0), array.GetLength(1)];
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(0); j++)
-        {
-            result[i, j ] = array[j, i];
-        }
-    }
-    return result;
- }
- int [, ] progression(int [, ] array ){
+ int [, ] Progression(int [, ] array ){
     int [,] matrix = new int [ array.GetLength(0) , array.GetLength(1) ];
     for (int i = 0; i < array.GetLongLength(0); i++)
     {
@@ -76,4 +50,4 @@ int [,] ChangeArray(int [, ]array ){
 int [, ] matrix = GetArray(rows, columns, 0, 10);
 PrintArray(matrix);
 Console.WriteLine();
-PrintArray(progression(matrix));
+PrintArray(Progression(matrix));
