@@ -29,18 +29,28 @@ void PrintArray(int [,] matrix){
     }
 }
 
+
+
+
+
  int [, ] Progression(int [, ] array ){
     int [,] matrix = new int [ array.GetLength(0) , array.GetLength(1) ];
     for (int i = 0; i < array.GetLongLength(0); i++)
     {
-        for (int j = 1; j < array.GetLength(1); j++)
+        for (int j = 0; j < array.GetLength(1)-1; j++)
         {
-            int key = array[i, j];
-            for (int p = j - 1; p >= 0 && array[i, p] > key; p-- )
-            {
-                array[i, p + 1] = array[i, p];
-                array[i, p  ] = key;
-            }            
+            int minPosition = j;
+            for (int p = j+1; p < array.GetLength(1); p++) {
+                if (array[i, p]< array[i, minPosition]){
+                minPosition = p;
+            }
+
+            }
+            int minElement = array[i, j];
+            array[i, j] = array[i, minPosition];
+            array[i, minPosition] = minElement;
+
+                   
         }
     
     }
